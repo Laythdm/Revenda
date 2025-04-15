@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Veículo</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+  <div class="informacoes">
+    <form action="#" th:action="@{/salvarCarro}" th:object="${carro}" method="POST">
+      <h3>Registro de Veículo</h3>
+
+      <div class="form-group">
+        <label for="modelo">Modelo</label>
+        <input type="text" id="modelo" th:field="*{modelo}" placeholder="Ex: HB20">
+      </div>
+
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" id="marca" th:field="*{marca}" placeholder="Ex: Hyundai">
+      </div>
+
+      <div class="form-group">
+        <label for="ano">Ano</label>
+        <input type="text" id="ano" th:field="*{ano}" placeholder="Ex: 2023">
+      </div>
+
+      <div class="form-group">
+        <label for="disponivel">Disponível</label>
+        <select id="disponivel" th:field="*{disponivel}">
+         <option th:value="Sim">Sim</option>
+         <option th:value="Não">Não</option>
+       </select>
+      </div>
+
+      <button type="submit">Adicionar</button>
+      <a class="link-voltar" href="/lista">← Voltar à lista de veículos</a>
+    </form>
+  </div>
+</body>
+
+</html>
