@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Veículos</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+  <div class="informacoes">
+    <h3>Lista de Veículos</h3>
+      <p><a th:href="@{/logout}"><button type="button">Sair</button></a></p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Modelo</th>
+          <th>Marca</th>
+          <th>Ano</th>
+          <th>Disponível</th>
+          <th>Atualizar Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="carro : ${listaCarros}">
+          <td th:text="${carro.id}"></td>
+          <td th:text="${carro.modelo}"></td>
+          <td th:text="${carro.marca}"></td>
+          <td th:text="${carro.ano}"></td>
+          <td th:text="${carro.disponivel}"></td>
+          <td>
+            <form th:action="@{/carro/status/{id}(id=${carro.id})}" method="POST">
+              <select name="disponivel" th:value="${carro.disponivel}">
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+              </select>
+              <button type="submit">Atualizar</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
