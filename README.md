@@ -6,7 +6,7 @@ Nesta branch eu foquei em duas coisas: **funcionalidade de venda** e **correçõ
 
 ### Ajustes visuais
 - Adicionado **sidebar**.
-- Ajuste no **CSS**: A pagina agora possua um escuro.
+- Ajuste no **CSS**: A pagina agora possua um tema escuro.
 
 ### Correções de bugs
 - Correção no controle de **permissões**: antes nenhum perfil conseguia acessar a lista ou registrar venda.
