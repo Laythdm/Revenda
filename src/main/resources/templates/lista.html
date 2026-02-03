@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Estoque - Revenda</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="app">
+    <div th:replace="fragments/sidebar :: sidebar('lista')"></div>
+
+    <div class="main">
+      <div th:replace="fragments/topbar :: topbar('Estoque de carros')"></div>
+
+      <main class="content">
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="h2">Estoque</h2>
+              <p class="muted">Veja os veículos cadastrados e acompanhe o status.</p>
+            </div>
+
+            <span sec:authorize="hasRole('GERENTE')">
+              <a class="btn btn-primary" th:href="@{/criarCarroForm}">Cadastrar carro</a>
+            </span>
+
+            <span sec:authorize="hasRole('VENDEDOR')">
+              <a class="btn btn-primary" th:href="@{/vendas/nova}">Vender</a>
+            </span>
+          </div>
+
+          <div class="card-body">
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Ano</th>
+                    <th>Cor</th>
+                    <th>Status</th>
+                    <th style="width:300px">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="carro : ${listaCarros}">
+                    <td th:text="${carro.id}"></td>
+                    <td th:text="${carro.modelo}"></td>
+                    <td th:text="${carro.marca}"></td>
+                    <td th:text="${carro.ano}"></td>
+                    <td th:text="${carro.cor}"></td>
+
+                    <td>
+                      <span class="pill"
+                            th:classappend="${carro.status.name() == 'DISPONIVEL' ? ' pill-ok' : (carro.status.name() == 'VENDIDO' ? ' pill-warn' : ' pill-bad')}"
+                            th:text="${carro.status.descricao}">
+                      </span>
+                    </td>
+
+                    <td>
+                      <div class="actions">
+                        <span sec:authorize="hasRole('GERENTE')">
+                          <form th:action="@{/carro/status/{id}(id=${carro.id})}" method="POST" class="actions">
+                            <select name="status" class="select" style="max-width:160px">
+                              <option value="DISPONIVEL" th:selected="${carro.status.name()} == 'DISPONIVEL'">Disponível</option>
+                              <option value="INDISPONIVEL" th:selected="${carro.status.name()} == 'INDISPONIVEL'">Indisponível</option>
+                              <option value="VENDIDO" th:selected="${carro.status.name()} == 'VENDIDO'">Vendido</option>
+                            </select>
+                            <button class="btn btn-soft" type="submit">Atualizar</button>
+                          </form>
+                        </span>
+
+                        <span sec:authorize="hasRole('VENDEDOR')">
+                          <a class="btn btn-soft"
+   th:if="${carro.status.name()} == 'DISPONIVEL'"
+   th:href="@{/vendas/nova(carroId=${carro.id})}">
+   Vender
+</a>
+<a class="btn btn-soft disabled"
+   th:unless="${carro.status.name()} == 'DISPONIVEL'"
+   href="#"
+   aria-disabled="true"
+   tabindex="-1">
+   Vender
+</a>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr th:if="${#lists.isEmpty(listaCarros)}">
+                    <td colspan="7" class="muted">Nenhum veículo cadastrado.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

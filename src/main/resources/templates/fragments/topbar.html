@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+  <header class="topbar" th:fragment="topbar(titulo)">
+    <div>
+      <div class="page-title" th:text="${titulo}">Página</div>
+      <div class="page-sub">Revenda Control</div>
+    </div>
+    <div class="topbar-right">
+      <span class="badge" sec:authentication="name"></span>
+      <a class="btn btn-ghost" th:href="@{/logout}">Sair</a>
+    </div>
+  </header>
+</body>
+</html>

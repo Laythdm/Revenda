@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Revenda</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="app">
+    <div th:replace="fragments/sidebar :: sidebar('dashboard')"></div>
+
+    <div class="main">
+      <div th:replace="fragments/topbar :: topbar('Dashboard')"></div>
+
+      <main class="content">
+        <div class="grid-2">
+          <section class="card">
+            <div class="card-header">
+              <h2 class="h2">Atalhos</h2>
+              <p class="muted">Acesso rápido às principais telas.</p>
+            </div>
+            <div class="card-body">
+              <div class="actions">
+                <a class="btn btn-primary" th:href="@{/lista}">Ver estoque</a>
+
+                <span sec:authorize="hasRole('GERENTE')">
+                  <a class="btn" th:href="@{/criarCarroForm}">Cadastrar carro</a>
+                </span>
+
+                <a class="btn btn-ghost" th:href="@{/index}">Menu rápido</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <h2 class="h2">Sessão</h2>
+              <p class="muted">Informações do usuário logado.</p>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <span class="muted">Usuário</span>
+                <span><b sec:authentication="name"></b></span>
+              </div>
+              <div class="row" style="margin-top:.45rem">
+                <span class="muted">Perfil</span>
+                <span><b sec:authentication="authorities"></b></span>
+              </div>
+              <div style="margin-top:1rem">
+                <a class="btn btn-ghost" th:href="@{/logout}">Sair</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

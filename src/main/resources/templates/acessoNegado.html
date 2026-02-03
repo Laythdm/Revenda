@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Acesso negado - Revenda</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="auth">
+    <div class="card auth-card">
+      <div class="card-header">
+        <h1 class="h1">Acesso negado</h1>
+        <p class="muted">Você não tem permissão para acessar essa funcionalidade.</p>
+      </div>
+
+      <div class="card-body">
+        <div class="actions">
+          <a class="btn btn-primary" th:href="@{/dashboard}">Voltar</a>
+          <a class="btn btn-ghost" th:href="@{/logout}">Sair</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

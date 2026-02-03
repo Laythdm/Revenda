@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Histórico de vendas - Revenda</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="app">
+    <div th:replace="fragments/sidebar :: sidebar('historico')"></div>
+
+    <div class="main">
+      <div th:replace="fragments/topbar :: topbar('Histórico de vendas')"></div>
+
+      <main class="content">
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="h2">Vendas</h2>
+              <p class="muted">Visão geral das vendas registradas (apenas gerente).</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Veículo</th>
+                    <th>Cliente</th>
+                    <th>CPF</th>
+                    <th>Valor</th>
+                    <th>Pagamento</th>
+                    <th>Vendedor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="v : ${vendas}">
+                    <td th:text="${#temporals.format(v.dataVenda, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${v.carro.marca + ' ' + v.carro.modelo + ' (' + v.carro.ano + ')'}"></td>
+                    <td th:text="${v.nome}"></td>
+                    <td th:text="${v.cpf}"></td>
+                    <td th:text="${v.valor}"></td>
+                    <td th:text="${v.metodoPagamento}"></td>
+                    <td th:text="${v.usuario.login}"></td>
+                  </tr>
+
+                  <tr th:if="${#lists.isEmpty(vendas)}">
+                    <td colspan="7" class="muted">Nenhuma venda registrada.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>
