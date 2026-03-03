@@ -1,108 +1,125 @@
-Sistema de Controle de Revenda de Veículos
+# Sistema de Controle de Revenda de Veículos
 
 Este projeto é um sistema web para controle interno de uma pequena revendedora de veículos, permitindo o gerenciamento do estoque de carros, controle de usuários e fluxo básico de venda/dar baixa.
 
-O projeto foi originalmente desenvolvido como Projeto Integrador do curso técnico e está sendo reativado e aprimorado com novas funcionalidades, melhorias de estrutura e segurança, com foco em aprendizado e portfólio.
+O sistema foi originalmente desenvolvido como Projeto Integrador do curso técnico e está sendo reativado e aprimorado com novas funcionalidades, melhorias estruturais e reforço de segurança, com foco em aprendizado e portfólio.
 
-Objetivo do sistema
+---
+
+## Objetivo do Sistema
 
 Criar um sistema interno simples que permita a uma revendedora:
 
-Cadastrar e gerenciar veículos
+- Cadastrar e gerenciar veículos  
+- Visualizar o estoque  
+- Dar baixa em veículos  
+- Controlar acesso por tipo de usuário (Gerente e Vendedor)  
+- Simular o fluxo básico de operação de uma loja real  
 
-Visualizar estoque
+---
 
-Dar baixa em veículos
+## Funcionalidades Atuais
 
-Controlar acesso por tipo de usuário (gerente e vendedor)
+- Login de usuários  
+- Controle de acesso por perfil  
+  - GERENTE: cadastrar veículos e dar baixa  
+  - VENDEDOR: dar baixa e visualizar  
+- Cadastro de carros  
+- Listagem de veículos  
+- Alteração de status do veículo  
+- API REST para testes (Postman)  
+- Validações de campos  
+- Dashboard inicial  
 
-Simular um fluxo básico de operação de uma loja real
+---
 
-Funcionalidades atuais
-
-Login de usuários
-
-Controle de acesso por perfil
-
-GERENTE: cadastrar veículos e dar baixa
-
-VENDEDOR: dar baixa e visualizar
-
-Cadastro de carros
-
-Listagem de veículos
-
-Alteração de status do carro
-
-API REST para testes (Postman)
-
-Validações de campos
-
-Dashboard inicial
-
-Usuários de teste
+## Usuários de Teste
 
 Ao iniciar o sistema, dois usuários são criados automaticamente:
 
-gerente
-senha: 123
+| Perfil   | Login     | Senha |
+|----------|----------|-------|
+| GERENTE  | gerente  | 123   |
+| VENDEDOR | vendedor | 123   |
 
-vendedor
-senha: 123
+---
 
-Tecnologias utilizadas
+## Tecnologias Utilizadas
 
-Java 17
+- Java 17  
+- Spring Boot  
+- Spring MVC  
+- Spring Data JPA  
+- Spring Security  
+- Thymeleaf  
+- MySQL  
+- Maven  
 
-Spring Boot
+---
 
-Spring MVC
+## Estrutura do Projeto
 
-Spring Data JPA
 
-Spring Security
-
-Thymeleaf
-
-MySQL
-
-Maven
-
-Estrutura do projeto
-
-controller → controllers MVC e REST
-
-service → regras de negócio
-
-data → entidades JPA e repositórios
-
-config → configurações de segurança e login
-
-templates → telas do sistema
-
+controller → Controllers MVC e REST
+service → Regras de negócio
+data → Entidades JPA e Repositórios
+config → Configurações de segurança e login
+templates → Telas do sistema
 static → CSS e recursos estáticos
 
-Como rodar (do jeito que eu uso no NetBeans)
-Abra o projeto no NetBeans.
-Localize a classe: src/main/java/com/ativ/atividade2/Atividade2Application.java
-Clique com o botão direito em Atividade2Application.java e use Run File.
-Banco de dados
-Projeto usando MySQL.
-Configure usuário/senha do banco em: src/main/resources/application.properties
-Obs.: se você já tinha carros antigos no banco e adicionou o campo cor depois, pode existir registro antigo sem cor.
-Caso dê problema, dá para corrigir rápido com:
 
-UPDATE carro SET cor = 'Não informado' WHERE cor IS NULL OR cor = '';
-Acesso (login)
-Existem dois perfis para teste:
-GERENTE (senha: 123)
-VENDEDOR (senha: 123)
+---
+
+## Como Rodar o Projeto
+
+### Pelo NetBeans (forma utilizada no desenvolvimento)
+
+1. Abra o projeto no NetBeans  
+2. Localize a classe:
+
+
+src/main/java/com/ativ/atividade2/Atividade2Application.java
+
+
+3. Clique com o botão direito em `Atividade2Application.java`  
+4. Selecione **Run File**
+
+---
+
+## Banco de Dados
+
+Banco utilizado: MySQL  
+Nome do banco: `Projeto`
+
+Configure usuário e senha do banco em:
+
+
+src/main/resources/application.properties
+
+
+### Observação
+
+Se já existirem registros antigos no banco anteriores à adição do campo `cor`, pode haver valores nulos.
+
+Caso ocorra erro, execute:
+
+```sql
+UPDATE carro 
+SET cor = 'Não informado' 
+WHERE cor IS NULL OR cor = '';
+Acesso ao Sistema
+
+Perfis disponíveis para teste:
+
+GERENTE — senha: 123
+
+VENDEDOR — senha: 123
+
+Status do Projeto
 
 Este projeto está em constante evolução.
 
-O foco é simular um sistema real de empresa para fins de estudo e portfólio.
-
-Novas telas, melhorias visuais e novas funcionalidades ainda serão adicionadas.
+O objetivo é simular um sistema real de empresa para fins de estudo e portfólio. Novas telas, melhorias visuais e funcionalidades adicionais ainda serão implementadas.
 
 Autor
 
