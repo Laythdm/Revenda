@@ -68,7 +68,7 @@ UPDATE carro SET cor = 'Não informado' WHERE cor IS NULL OR cor = '';
 - JavaScript
 - MySQL
 
-#Autor
+# Autor
 
-##João Gabriel da Rosa Silva
-##Estudante de Engenharia de Software / Desenvolvimento de Sistemas
+## João Gabriel da Rosa Silva
+## Estudante de Engenharia de Software / Desenvolvimento de Sistemas
