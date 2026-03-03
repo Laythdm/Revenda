@@ -1,70 +1,110 @@
-# Revenda
-Sistema interno simples para controle de estoque de carros e registro de vendas (projeto de estudo / integrador reaproveitado).
+Sistema de Controle de Revenda de Veículos
 
-## O que mudou nesta atualização (vendas + permissões + ajustes visuais)
-Nesta branch eu foquei em duas coisas: **funcionalidade de venda** e **correções/ajustes visuais**.
+Este projeto é um sistema web para controle interno de uma pequena revendedora de veículos, permitindo o gerenciamento do estoque de carros, controle de usuários e fluxo básico de venda/dar baixa.
 
-### Ajustes visuais
-- Adicionado **sidebar**.
-- Ajuste no **CSS**: A pagina agora possue um tema escuro.
+O projeto foi originalmente desenvolvido como Projeto Integrador do curso técnico e está sendo reativado e aprimorado com novas funcionalidades, melhorias de estrutura e segurança, com foco em aprendizado e portfólio.
 
-### Correções de bugs
-- Correção no controle de **permissões**: antes nenhum perfil conseguia acessar a lista ou registrar venda.
+Objetivo do sistema
 
-### Funcionalidade nova: Venda de veiculo
-- Criado fluxo de **venda** para o perfil VENDEDOR:
-  - Botão **Vender** disponivel na tela de estoque (ao lado das ações).
-  - Tela de venda para escolher um veiculo **disponível** e preencher dados do cliente:
-    - Nome, CPF, RG, número (contato)
-    - Valor da venda
-    - Metodo de pagamento
-  - Apóos confirmar a venda, o veículo passa para o status **VENDIDO**.
-- Tela de **histórico de vendas** disponível apenas para o GERENTE, mostrando tambem o usuario que realizou a venda.
+Criar um sistema interno simples que permita a uma revendedora:
 
-### Regras de acesso (roles)
-- **VENDEDOR**
-  - Pode visualizar o estoque.
-  - Pode registrar venda (apenas em veículo disponível).
-  - **Não** pode alterar o status manualmente na tabela.
-- **GERENTE**
-  - Pode visualizar o estoque.
-  - Pode alterar status e fazer ações administrativas.
-  - É o único que pode lidar com veiculo em status **VENDIDO** (ex: ajuste/correção de status).
+Cadastrar e gerenciar veículos
 
-### Status do veículo
-- Em vez de “Sim/Não”, agora aparece:
-  - **Disponível**
-  - **Indisponível**
-  - **Vendido**
+Visualizar estoque
 
-### Campo novo no veículo
-- Adicionado o campo **cor** no cadastro.
+Dar baixa em veículos
 
-## Como rodar (do jeito que eu uso no NetBeans)
-1. Abra o projeto no NetBeans.
-2. Localize a classe:
-   `src/main/java/com/ativ/atividade2/Atividade2Application.java`
-3. Clique com o botão direito em `Atividade2Application.java` e use **Run File**.
+Controlar acesso por tipo de usuário (gerente e vendedor)
 
-## Banco de dados
-- Projeto usando **MySQL**.
-- Configure usuário/senha do banco em:
-  `src/main/resources/application.properties`
+Simular um fluxo básico de operação de uma loja real
 
-Obs.: se você já tinha carros antigos no banco e adicionou o campo `cor` depois, pode existir registro antigo sem cor.  
+Funcionalidades atuais
+
+Login de usuários
+
+Controle de acesso por perfil
+
+GERENTE: cadastrar veículos e dar baixa
+
+VENDEDOR: dar baixa e visualizar
+
+Cadastro de carros
+
+Listagem de veículos
+
+Alteração de status do carro
+
+API REST para testes (Postman)
+
+Validações de campos
+
+Dashboard inicial
+
+Usuários de teste
+
+Ao iniciar o sistema, dois usuários são criados automaticamente:
+
+gerente
+senha: 123
+
+vendedor
+senha: 123
+
+Tecnologias utilizadas
+
+Java 17
+
+Spring Boot
+
+Spring MVC
+
+Spring Data JPA
+
+Spring Security
+
+Thymeleaf
+
+MySQL
+
+Maven
+
+Estrutura do projeto
+
+controller → controllers MVC e REST
+
+service → regras de negócio
+
+data → entidades JPA e repositórios
+
+config → configurações de segurança e login
+
+templates → telas do sistema
+
+static → CSS e recursos estáticos
+
+Como rodar (do jeito que eu uso no NetBeans)
+Abra o projeto no NetBeans.
+Localize a classe: src/main/java/com/ativ/atividade2/Atividade2Application.java
+Clique com o botão direito em Atividade2Application.java e use Run File.
+Banco de dados
+Projeto usando MySQL.
+Configure usuário/senha do banco em: src/main/resources/application.properties
+Obs.: se você já tinha carros antigos no banco e adicionou o campo cor depois, pode existir registro antigo sem cor.
 Caso dê problema, dá para corrigir rápido com:
-```sql
+
 UPDATE carro SET cor = 'Não informado' WHERE cor IS NULL OR cor = '';
-```
+Acesso (login)
+Existem dois perfis para teste:
+GERENTE (senha: 123)
+VENDEDOR (senha: 123)
 
-## Acesso (login)
-- Existem dois perfis para teste:
-  - GERENTE (senha: 123)
-  - VENDEDOR (senha: 123)
+Este projeto está em constante evolução.
 
-## Tecnologias
-- Java (Spring Boot, Spring Security, JPA/Hibernate)
-- Thymeleaf (HTML)
-- CSS
-- JavaScript
-- MySQL
+O foco é simular um sistema real de empresa para fins de estudo e portfólio.
+
+Novas telas, melhorias visuais e novas funcionalidades ainda serão adicionadas.
+
+Autor
+
+João Gabriel da Rosa Silva
+Estudante de Engenharia de Software / Desenvolvimento de Sistemas
