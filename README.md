@@ -97,26 +97,6 @@ Configure usuário e senha do banco em:
 src/main/resources/application.properties
 
 
-### Observação
-
-Se já existirem registros antigos no banco anteriores à adição do campo `cor`, pode haver valores nulos.
-
-Caso ocorra erro, execute:
-
-```sql
-UPDATE carro 
-SET cor = 'Não informado' 
-WHERE cor IS NULL OR cor = '';
-Acesso ao Sistema
-
-Perfis disponíveis para teste:
-
-GERENTE — senha: 123
-
-VENDEDOR — senha: 123
-
-Status do Projeto
-
 Este projeto está em constante evolução.
 
 O objetivo é simular um sistema real de empresa para fins de estudo e portfólio. Novas telas, melhorias visuais e funcionalidades adicionais ainda serão implementadas.
