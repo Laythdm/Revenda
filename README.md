@@ -1,9 +1,8 @@
 # Revenda
-Sistema interno simples para controle de estoque de carros e registro de vendas (projeto de estudo / integrador reaproveitado).
+Este projeto é um sistema web para controle interno de uma pequena revendedora de veículos, permitindo o gerenciamento do estoque de carros, controle de usuários e fluxo básico de venda/dar baixa.
+O projeto foi originalmente desenvolvido como Projeto Integrador do curso técnico e está sendo reativado e aprimorado com novas funcionalidades, melhorias de estrutura e segurança, com foco em aprendizado e portfólio.
 
-## O que mudou nesta atualização (vendas + permissões + ajustes visuais)
-Nesta branch eu foquei em duas coisas: **funcionalidade de venda** e **correções/ajustes visuais**.
-
+# O que mudou desde a criaçãp do projeto (vendas + permissões + ajustes visuais)
 ### Ajustes visuais
 - Adicionado **sidebar**.
 - Ajuste no **CSS**: A pagina agora possua um tema escuro.
@@ -68,3 +67,8 @@ UPDATE carro SET cor = 'Não informado' WHERE cor IS NULL OR cor = '';
 - CSS
 - JavaScript
 - MySQL
+
+#Autor
+
+##João Gabriel da Rosa Silva
+##Estudante de Engenharia de Software / Desenvolvimento de Sistemas
