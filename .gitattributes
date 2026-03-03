@@ -1,0 +1,9 @@
+*.html linguist-detectable=true
+*.css  linguist-detectable=true
+*.js   linguist-detectable=true
+
+src/main/resources/templates/** linguist-detectable=true
+src/main/resources/static/**    linguist-detectable=true
+
+src/main/resources/** linguist-vendored=false
+src/main/resources/** linguist-generated=false

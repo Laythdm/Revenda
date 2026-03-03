@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Menu - Revenda</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="app">
+    <div th:replace="fragments/sidebar :: sidebar('menu')"></div>
+
+    <div class="main">
+      <div th:replace="fragments/topbar :: topbar('Menu')"></div>
+
+      <main class="content">
+        <div class="grid">
+          <section class="card">
+            <div class="card-header">
+              <h2 class="h2">Ações rápidas</h2>
+              <p class="muted">Escolha uma opção para continuar.</p>
+            </div>
+            <div class="card-body">
+              <div class="actions">
+                <a class="btn btn-primary" th:href="@{/lista}">Ver estoque</a>
+
+                <span sec:authorize="hasRole('VENDEDOR')">
+                  <a class="btn" th:href="@{/vendas/nova}">Registrar venda</a>
+                </span>
+
+                <span sec:authorize="hasRole('GERENTE')">
+                  <a class="btn" th:href="@{/criarCarroForm}">Cadastrar carro</a>
+                  <a class="btn" th:href="@{/vendas/historico}">Histórico de vendas</a>
+                </span>
+
+                <a class="btn btn-ghost" th:href="@{/dashboard}">Voltar ao dashboard</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <h2 class="h2">Dica</h2>
+              <p class="muted">O vendedor pode listar e atualizar status. O gerente também pode cadastrar.</p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

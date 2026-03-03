@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar carro - Revenda</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="app">
+    <div th:replace="fragments/sidebar :: sidebar('cadastro')"></div>
+
+    <div class="main">
+      <div th:replace="fragments/topbar :: topbar('Cadastrar carro')"></div>
+
+      <main class="content">
+        <section class="card">
+          <div class="card-header">
+            <h2 class="h2">Registro de veículo</h2>
+            <p class="muted">Preencha os campos e clique em salvar.</p>
+          </div>
+
+          <div class="card-body">
+            <form th:action="@{/salvarCarro}" th:object="${carro}" method="POST" class="form">
+              <div class="grid-2">
+                <div class="form-group">
+                  <label for="modelo">Modelo</label>
+                  <input type="text" id="modelo" class="input" th:field="*{modelo}" placeholder="Ex: HB20" />
+                  <small class="error" th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="marca">Marca</label>
+                  <input type="text" id="marca" class="input" th:field="*{marca}" placeholder="Ex: Hyundai" />
+                  <small class="error" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="ano">Ano</label>
+                  <input type="text" id="ano" class="input" th:field="*{ano}" placeholder="Ex: 2023" />
+                  <small class="error" th:if="${#fields.hasErrors('ano')}" th:errors="*{ano}"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="cor">Cor</label>
+                  <input type="text" id="cor" class="input" th:field="*{cor}" placeholder="Ex: Prata" />
+                  <small class="error" th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></small>
+                </div>
+
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select id="status" class="select" th:field="*{status}">
+                    <option th:each="s : ${statusOpcoes}" th:value="${s}" th:text="${s.descricao}"></option>
+                  </select>
+                  <small class="error" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></small>
+                </div>
+              </div>
+
+              <div class="actions">
+                <a class="btn btn-ghost" th:href="@{/index}">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

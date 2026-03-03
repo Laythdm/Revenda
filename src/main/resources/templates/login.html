@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Revenda</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="auth">
+    <div class="card auth-card">
+      <div class="card-header">
+        <h1 class="h1">Entrar</h1>
+        <p class="muted">Acesse o sistema interno da revenda.</p>
+      </div>
+
+      <div class="card-body">
+        <div th:if="${param.error}" class="alert alert-danger">Usuário ou senha inválidos.</div>
+        <div th:if="${param.logout}" class="alert alert-ok">Você saiu do sistema.</div>
+
+        <form th:action="@{/login}" method="post" class="form">
+          <div class="field">
+            <label for="username">Usuário</label>
+            <input id="username" name="username" type="text" class="input" placeholder="gerente ou vendedor" autocomplete="username"/>
+          </div>
+
+          <div class="field">
+            <label for="password">Senha</label>
+            <input id="password" name="password" type="password" class="input" placeholder="123" autocomplete="current-password"/>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%">Entrar</button>
+        </form>
+
+        <div class="hint">
+          <b>Usuários de teste</b>
+          <div class="muted">gerente / 123</div>
+          <div class="muted">vendedor / 123</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
